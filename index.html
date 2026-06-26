@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hôtel des Muverans — Votre évasion au cœur des Alpes Suisses · Ovronnaz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #1E2C24;
+      --color-forest: #2A4032;
+      --color-sage: #6B8C72;
+      --color-gold: #B89A5A;
+      --color-cream: #F7F4EE;
+      --color-sand: #E8E0D0;
+      --color-bg: #FAFAF8;
+      --color-text: #1E2C24;
+      --color-muted: #7A8075;
+      --font-display: 'Cinzel', 'Times New Roman', serif;
+      --font-body: 'Montserrat', sans-serif;
+      --spacing-section: 130px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      overflow-x: hidden;
+      line-height: 1.65;
+    }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+      height: 76px;
+      transition: background 0.35s, box-shadow 0.35s;
+    }
+
+    nav.scrolled {
+      background: rgba(30, 44, 36, 0.97);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .nav-logo-name {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--color-cream);
+      line-height: 1;
+    }
+
+    .nav-logo-sub {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(184,154,90,0.8);
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(247,244,238,0.7);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--color-cream); }
+
+    .nav-book {
+      border: 1px solid rgba(184,154,90,0.6) !important;
+      color: var(--color-gold) !important;
+      padding: 9px 22px !important;
+      border-radius: 1px;
+      transition: background 0.2s, border-color 0.2s !important;
+    }
+
+    .nav-book:hover {
+      background: rgba(184,154,90,0.12) !important;
+      border-color: var(--color-gold) !important;
+    }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .nav-burger span {
+      width: 24px;
+      height: 1px;
+      background: var(--color-cream);
+      display: block;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      height: 100vh;
+      min-height: 700px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      /* IMAGE: hero-background */
+      background:
+        linear-gradient(to bottom, rgba(30,44,36,0.5) 0%, rgba(30,44,36,0.35) 50%, rgba(30,44,36,0.75) 100%),
+        url('https://images.unsplash.com/photo-1780270276943-653f670596a3?w=1600&auto=format&fit=crop&q=85') center/cover no-repeat;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 32px;
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--color-gold);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 6.5vw, 88px);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+      color: var(--color-cream);
+      margin-bottom: 12px;
+    }
+
+    .hero-title-sub {
+      font-family: var(--font-display);
+      font-size: clamp(16px, 2.5vw, 26px);
+      font-weight: 300;
+      letter-spacing: 0.16em;
+      color: rgba(247,244,238,0.65);
+      font-style: italic;
+      margin-bottom: 32px;
+    }
+
+    .hero-divider {
+      width: 1px;
+      height: 48px;
+      background: rgba(184,154,90,0.5);
+      margin: 0 auto 32px;
+    }
+
+    .hero-tagline {
+      font-size: 15px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(247,244,238,0.78);
+      line-height: 1.65;
+      margin-bottom: 44px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      background: var(--color-gold);
+      color: var(--color-primary);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 1px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-gold:hover { opacity: 0.88; }
+
+    .btn-ghost-light {
+      display: inline-block;
+      border: 1px solid rgba(247,244,238,0.35);
+      color: rgba(247,244,238,0.85);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 1px;
+      transition: border-color 0.2s;
+    }
+
+    .btn-ghost-light:hover { border-color: rgba(247,244,238,0.7); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-scroll-label {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(247,244,238,0.45);
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(247,244,238,0.4), transparent);
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.15s; }
+    .fade-in-delay-2 { transition-delay: 0.3s; }
+    .fade-in-delay-3 { transition-delay: 0.45s; }
+
+    /* ===== CONTENEUR ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+
+    section { padding: var(--spacing-section) 0; }
+
+    .eyebrow {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--color-gold);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 54px);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      line-height: 1.15;
+      color: var(--color-primary);
+      margin-bottom: 20px;
+    }
+
+    .section-title em { font-style: italic; font-weight: 300; }
+
+    .section-lead {
+      font-size: 17px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--color-muted);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ===== STRIP CHIFFRES ===== */
+    .numbers-strip {
+      background: var(--color-forest);
+      padding: 56px 0;
+    }
+
+    .numbers-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+    }
+
+    .number-item {
+      padding: 0 32px;
+      border-right: 1px solid rgba(247,244,238,0.07);
+    }
+
+    .number-item:last-child { border-right: none; }
+
+    .number-val {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--color-gold);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .number-label {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(247,244,238,0.45);
+    }
+
+    /* ===== SECTION HÔTEL ===== */
+    #hotel {
+      background: var(--color-bg);
+    }
+
+    .hotel-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hotel-text p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--color-muted);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    /* IMAGE: hotel-exterior */
+    .hotel-img {
+      width: 100%;
+      height: 560px;
+      background: url('https://images.unsplash.com/photo-1760900090912-5c2764433e75?w=900&auto=format&fit=crop&q=85') center/cover no-repeat;
+      border-radius: 1px;
+    }
+
+    /* ===== SECTION RESTAURANT ===== */
+    #restaurant {
+      background: var(--color-primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .restaurant-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 560px;
+    }
+
+    .restaurant-content {
+      padding: 80px 64px 80px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .restaurant-content .eyebrow { color: var(--color-gold); }
+
+    .restaurant-content .section-title { color: var(--color-cream); }
+
+    .restaurant-content p {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(247,244,238,0.55);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+
+    .restaurant-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .restaurant-tag {
+      background: rgba(247,244,238,0.06);
+      border: 1px solid rgba(247,244,238,0.1);
+      border-radius: 1px;
+      padding: 7px 16px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(247,244,238,0.55);
+    }
+
+    /* IMAGE: restaurant-image */
+    .restaurant-img {
+      background: url('https://images.unsplash.com/photo-1621293890534-d1c6f03ab331?w=900&auto=format&fit=crop&q=85') center/cover no-repeat;
+      min-height: 560px;
+    }
+
+    /* ===== SECTION CHAMBRES ===== */
+    #chambres {
+      background: var(--color-cream);
+    }
+
+    .chambres-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 64px;
+    }
+
+    .chambres-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .chambre-card {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .chambre-img {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s ease;
+    }
+
+    .chambre-card:hover .chambre-img { transform: scale(1.04); }
+
+    .chambre-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30,44,36,0.9) 0%, rgba(30,44,36,0.2) 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+    }
+
+    .chambre-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--color-cream);
+      margin-bottom: 4px;
+    }
+
+    .chambre-capacity {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      color: var(--color-gold);
+    }
+
+    /* IMAGE chambre backgrounds */
+    .ch-double { background: url('https://images.unsplash.com/photo-1683555447269-680c474b6731?w=700&auto=format&fit=crop&q=85') center/cover no-repeat; }
+    .ch-superieure { background: url('https://images.unsplash.com/photo-1780270276943-653f670596a3?w=700&auto=format&fit=crop&q=85') center/cover no-repeat; }
+    .ch-appartement { background: url('https://images.unsplash.com/photo-1760900090912-5c2764433e75?w=700&auto=format&fit=crop&q=85') center/cover no-repeat; }
+
+    /* ===== SECTION BIEN-ÊTRE ===== */
+    #bienetre {
+      background: var(--color-bg);
+    }
+
+    .bienetre-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    /* IMAGE: spa-image */
+    .bienetre-img {
+      width: 100%;
+      height: 520px;
+      background: url('https://images.unsplash.com/photo-1770893670070-42a3c6f85133?w=900&auto=format&fit=crop&q=85') center/cover no-repeat;
+      border-radius: 1px;
+    }
+
+    .bienetre-text p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--color-muted);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .bienetre-services {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .bienetre-service {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 14px 18px;
+      background: var(--color-sand);
+      border-radius: 1px;
+    }
+
+    .bienetre-service-icon { font-size: 20px; }
+
+    .bienetre-service-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-primary);
+    }
+
+    /* ===== SECTION ACTIVITÉS ===== */
+    #activites {
+      background: var(--color-forest);
+      color: var(--color-cream);
+    }
+
+    #activites .eyebrow { color: rgba(184,154,90,0.9); }
+    #activites .section-title { color: var(--color-cream); letter-spacing: 0.06em; }
+
+    .activites-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 64px;
+    }
+
+    .activite-card {
+      background: rgba(247,244,238,0.04);
+      padding: 36px 28px;
+      border: 1px solid rgba(247,244,238,0.06);
+      border-radius: 1px;
+      transition: background 0.25s;
+    }
+
+    .activite-card:hover { background: rgba(247,244,238,0.07); }
+
+    .activite-icon {
+      font-size: 32px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .activite-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--color-cream);
+      margin-bottom: 10px;
+    }
+
+    .activite-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(247,244,238,0.5);
+      line-height: 1.7;
+    }
+
+    /* ===== SECTION CONTACT ===== */
+    #contact {
+      background: var(--color-cream);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 64px;
+    }
+
+    .contact-text p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--color-muted);
+      line-height: 1.85;
+      margin-bottom: 32px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--color-forest);
+      border-radius: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .contact-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 4px;
+    }
+
+    .contact-value {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-value:hover { color: var(--color-sage); }
+
+    .contact-map {
+      height: 100%;
+      min-height: 440px;
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      border: none;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--color-primary);
+      padding: 72px 0 36px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 64px;
+      margin-bottom: 56px;
+    }
+
+    .footer-logo-name {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--color-cream);
+      margin-bottom: 6px;
+    }
+
+    .footer-logo-sub {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 20px;
+    }
+
+    .footer-brand-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(247,244,238,0.4);
+      line-height: 1.8;
+      max-width: 270px;
+    }
+
+    .footer-col-title {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 22px;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col ul li { margin-bottom: 14px; }
+
+    .footer-col ul li a {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(247,244,238,0.45);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--color-cream); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(247,244,238,0.06);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      font-weight: 300;
+      color: rgba(247,244,238,0.25);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-cta-link {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      text-decoration: none;
+      border: 1px solid rgba(184,154,90,0.4);
+      padding: 8px 20px;
+      border-radius: 1px;
+      transition: border-color 0.2s;
+    }
+
+    .footer-cta-link:hover { border-color: var(--color-gold); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1100px) {
+      .hotel-layout, .bienetre-layout, .contact-layout, .footer-inner,
+      .chambres-header { grid-template-columns: 1fr; gap: 48px; }
+      .restaurant-layout { grid-template-columns: 1fr; }
+      .restaurant-content { padding: 64px 0; }
+      .restaurant-img { min-height: 400px; }
+      .chambres-grid { grid-template-columns: 1fr 1fr; }
+      .activites-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .numbers-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .number-item { border-right: none; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --spacing-section: 80px; }
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+      .container { padding: 0 24px; }
+      .chambres-grid { grid-template-columns: 1fr; }
+      .activites-grid { grid-template-columns: 1fr 1fr; }
+      .chambre-card { height: 300px; }
+      .hero-content { padding: 0 24px; }
+    }
+
+    /* ===== MOBILE MENU ===== */
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 76px;
+      left: 0;
+      right: 0;
+      background: rgba(30,44,36,0.98);
+      z-index: 99;
+      padding: 28px 24px;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav-mobile.open { display: flex; }
+
+    .nav-mobile a {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(247,244,238,0.7);
+      text-decoration: none;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(247,244,238,0.06);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="mainNav">
+    <div class="nav-logo">
+      <span class="nav-logo-name">Hôtel des Muverans</span>
+      <span class="nav-logo-sub">Ovronnaz · Valais · Alpes Suisses</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#hotel">L'hôtel</a></li>
+      <li><a href="#restaurant">Restaurant</a></li>
+      <li><a href="#chambres">Chambres</a></li>
+      <li><a href="#bienetre">Bien-être</a></li>
+      <li><a href="#activites">Activités</a></li>
+      <li><a href="mailto:info@hoteldesmuverans.ch" class="nav-book">Réserver</a></li>
+    </ul>
+    <div class="nav-burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="mobileMenu">
+    <a href="#hotel" onclick="toggleMenu()">L'hôtel</a>
+    <a href="#restaurant" onclick="toggleMenu()">Restaurant La Seya</a>
+    <a href="#chambres" onclick="toggleMenu()">Nos chambres</a>
+    <a href="#bienetre" onclick="toggleMenu()">Bien-être & Spa</a>
+    <a href="#activites" onclick="toggleMenu()">Activités</a>
+    <a href="#contact" onclick="toggleMenu()">Contact & Accès</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Ovronnaz · 1911 · Valais</p>
+      <h1 class="hero-title">Hôtel des<br>Muverans</h1>
+      <p class="hero-title-sub">Alpes Suisses</p>
+      <div class="hero-divider"></div>
+      <p class="hero-tagline">
+        Votre évasion au cœur des Alpes Suisses.<br>
+        Hôtel, restaurant gastronomique, bien-être et nature à Ovronnaz.
+      </p>
+      <div class="hero-actions">
+        <a href="mailto:info@hoteldesmuverans.ch" class="btn-gold">Demander une réservation</a>
+        <a href="#hotel" class="btn-ghost-light">Découvrir l'hôtel</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span class="hero-scroll-label">Explorer</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== STRIP CHIFFRES ===== -->
+  <div class="numbers-strip">
+    <div class="container">
+      <div class="numbers-inner">
+        <div class="number-item fade-in">
+          <div class="number-val">5</div>
+          <div class="number-label">Types de chambres</div>
+        </div>
+        <div class="number-item fade-in fade-in-delay-1">
+          <div class="number-val">1911</div>
+          <div class="number-label">Ovronnaz, Valais</div>
+        </div>
+        <div class="number-item fade-in fade-in-delay-2">
+          <div class="number-val">2</div>
+          <div class="number-label">Restaurants & Bar</div>
+        </div>
+        <div class="number-item fade-in fade-in-delay-3">
+          <div class="number-val">360°</div>
+          <div class="number-label">Vue sur les Alpes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION HÔTEL ===== -->
+  <section id="hotel">
+    <div class="container">
+      <div class="hotel-layout">
+        <div class="hotel-text fade-in">
+          <p class="eyebrow">Bienvenue</p>
+          <h2 class="section-title">Une évasion<br><em>alpine authentique</em></h2>
+          <p>Niché dans le village d'Ovronnaz, à 1 400 mètres d'altitude dans le Valais suisse, l'Hôtel des Muverans vous accueille dans un cadre exceptionnel, face aux sommets qui ont donné leur nom à l'établissement.</p>
+          <p>Hôtel, restaurant gastronomique, bar et services de séminaires — tout est réuni pour que votre séjour soit mémorable, qu'il s'agisse d'un weekend en couple, d'un séjour famille, d'un événement d'entreprise ou d'un retrait au vert.</p>
+          <p>Le petit-déjeuner buffet est inclus dans votre séjour, servi chaque matin de 8h à 10h.</p>
+        </div>
+        <!-- IMAGE: hotel-exterior -->
+        <div class="hotel-img fade-in fade-in-delay-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION RESTAURANT ===== -->
+  <section id="restaurant" style="padding: 0;">
+    <div class="restaurant-layout">
+      <div class="container" style="padding: 0 0 0 56px; display: flex; align-items: center;">
+        <div class="restaurant-content fade-in" style="max-width: 520px;">
+          <p class="eyebrow">Gastronomie</p>
+          <h2 class="section-title" style="color:var(--color-cream);">Restaurant<br><em>La Seya</em></h2>
+          <p>Notre restaurant La Seya propose une cuisine raffinée franco-suisse aux accents méditerranéens, élaborée à partir de produits locaux valaisans soigneusement sélectionnés.</p>
+          <p>Entre plats de montagne revisités et créations plus légères aux saveurs du Midi, la carte évolue au fil des saisons pour refléter le meilleur du terroir local.</p>
+          <div class="restaurant-tags">
+            <span class="restaurant-tag">Franco-suisse</span>
+            <span class="restaurant-tag">Méditerranéen</span>
+            <span class="restaurant-tag">Produits locaux</span>
+            <span class="restaurant-tag">Saisonnier</span>
+            <span class="restaurant-tag">Réservation : +41 27 305 20 01</span>
+          </div>
+        </div>
+      </div>
+      <!-- IMAGE: restaurant-image -->
+      <div class="restaurant-img fade-in fade-in-delay-2"></div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION CHAMBRES ===== -->
+  <section id="chambres">
+    <div class="container">
+      <div class="chambres-header">
+        <div class="fade-in">
+          <p class="eyebrow">Hébergements</p>
+          <h2 class="section-title">Nos chambres<br><em>& appartements</em></h2>
+        </div>
+        <p class="section-lead fade-in fade-in-delay-1">Du double cosy à l'appartement familial pour 6 personnes — chaque espace est pensé pour le confort et la vue sur les Alpes.</p>
+      </div>
+    </div>
+    <div class="chambres-grid">
+      <div class="chambre-card fade-in">
+        <div class="chambre-img ch-double"></div>
+        <div class="chambre-overlay">
+          <div class="chambre-name">Chambre Double</div>
+          <div class="chambre-capacity">2 personnes</div>
+        </div>
+      </div>
+      <div class="chambre-card fade-in fade-in-delay-1">
+        <div class="chambre-img ch-superieure"></div>
+        <div class="chambre-overlay">
+          <div class="chambre-name">Double Supérieure</div>
+          <div class="chambre-capacity">2 personnes · Vue montagne</div>
+        </div>
+      </div>
+      <div class="chambre-card fade-in fade-in-delay-2">
+        <div class="chambre-img ch-appartement"></div>
+        <div class="chambre-overlay">
+          <div class="chambre-name">Appartement & Suites</div>
+          <div class="chambre-capacity">Jusqu'à 6 personnes</div>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 32px; text-align: center;">
+      <p style="font-size:13px; color:var(--color-muted); font-weight:300;">Aussi disponibles : Chambre Quadruple (4 pers.) · Chambre Sextuple (6 pers.) · Petit-déjeuner buffet inclus</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION BIEN-ÊTRE ===== -->
+  <section id="bienetre">
+    <div class="container">
+      <div class="bienetre-layout">
+        <!-- IMAGE: spa-image -->
+        <div class="bienetre-img fade-in"></div>
+        <div class="fade-in fade-in-delay-2">
+          <p class="eyebrow">Bien-être</p>
+          <h2 class="section-title">Ressourcement<br><em>en altitude</em></h2>
+          <p>Le cadre d'Ovronnaz est propice à la détente totale. Entre la nature préservée, l'air pur des Alpes et nos espaces de bien-être, chaque séjour se transforme en véritable cure de ressourcement.</p>
+          <p>Profitez de notre sauna et fitness (en rénovation — réouverture prochaine), et complétez votre séjour par un accès aux fameux Bains Thermaux d'Ovronnaz, à quelques minutes de l'hôtel.</p>
+          <div class="bienetre-services">
+            <div class="bienetre-service">
+              <span class="bienetre-service-icon">🧖</span>
+              <span class="bienetre-service-text">Sauna & Fitness (en rénovation)</span>
+            </div>
+            <div class="bienetre-service">
+              <span class="bienetre-service-icon">♨️</span>
+              <span class="bienetre-service-text">Bains Thermaux d'Ovronnaz — à proximité</span>
+            </div>
+            <div class="bienetre-service">
+              <span class="bienetre-service-icon">🏔️</span>
+              <span class="bienetre-service-text">Randonnées et balades nature au départ de l'hôtel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION ACTIVITÉS ===== -->
+  <section id="activites">
+    <div class="container">
+      <div class="fade-in" style="text-align:center; margin-bottom:16px;">
+        <p class="eyebrow" style="justify-content:center;">À Ovronnaz</p>
+        <h2 class="section-title" style="color:var(--color-cream); text-align:center;">Nature & Activités</h2>
+      </div>
+      <div class="activites-grid">
+        <div class="activite-card fade-in">
+          <span class="activite-icon">⛷️</span>
+          <div class="activite-name">Ski & Sports d'hiver</div>
+          <div class="activite-desc">Pistes accessibles depuis Ovronnaz, télésiège de Jorasse. Domaine skiable alpin en plein cœur du Valais.</div>
+        </div>
+        <div class="activite-card fade-in fade-in-delay-1">
+          <span class="activite-icon">🥾</span>
+          <div class="activite-name">Randonnées</div>
+          <div class="activite-desc">Des dizaines de sentiers balisés au départ du village, pour tous les niveaux. Les Muverans en point de mire.</div>
+        </div>
+        <div class="activite-card fade-in fade-in-delay-2">
+          <span class="activite-icon">♨️</span>
+          <div class="activite-name">Bains Thermaux</div>
+          <div class="activite-desc">Les Bains Thermaux d'Ovronnaz, à quelques minutes — un moment de détente incontournable du séjour.</div>
+        </div>
+        <div class="activite-card fade-in fade-in-delay-3">
+          <span class="activite-icon">🏢</span>
+          <div class="activite-name">Séminaires</div>
+          <div class="activite-desc">Salles de réunion, hébergement et restauration pour vos événements d'entreprise en montagne.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION CONTACT ===== -->
+  <section id="contact">
+    <div class="container">
+      <div class="fade-in">
+        <p class="eyebrow">Nous rejoindre</p>
+        <h2 class="section-title">Contact<br><em>& Réservations</em></h2>
+      </div>
+      <div class="contact-layout">
+        <div class="fade-in">
+          <p>Notre équipe est disponible pour vous accompagner dans l'organisation de votre séjour, qu'il soit romantique, familial, ou professionnel.</p>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Adresse</div>
+              <div class="contact-value">Route des Muverans 54, 1911 Ovronnaz</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label">Réception</div>
+              <a href="tel:+41273052000" class="contact-value">+41 27 305 20 00</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🍽️</div>
+            <div>
+              <div class="contact-label">Restaurant La Seya</div>
+              <a href="tel:+41273052001" class="contact-value">+41 27 305 20 01</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <a href="mailto:info@hoteldesmuverans.ch" class="contact-value">info@hoteldesmuverans.ch</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌅</div>
+            <div>
+              <div class="contact-label">Petit-déjeuner</div>
+              <div class="contact-value">Buffet inclus · 8h00 – 10h00</div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-map fade-in fade-in-delay-2">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2750.0!2d7.1886!3d46.1921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478ec19b5d0e8e9f%3A0x0!2sRoute%20des%20Muverans%2054%2C%201911%20Ovronnaz!5e0!3m2!1sfr!2sch!4v1"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo-name">Hôtel des Muverans</div>
+          <div class="footer-logo-sub">Ovronnaz · Valais · Alpes Suisses</div>
+          <p class="footer-brand-desc">Votre évasion au cœur des Alpes Suisses. Hôtel, restaurant gastronomique La Seya, bien-être et activités de montagne à Ovronnaz.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">L'hôtel</div>
+          <ul>
+            <li><a href="#hotel">Présentation</a></li>
+            <li><a href="#restaurant">Restaurant La Seya</a></li>
+            <li><a href="#chambres">Chambres & Appartements</a></li>
+            <li><a href="#bienetre">Bien-être & Sauna</a></li>
+            <li><a href="#activites">Activités</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Contact</div>
+          <ul>
+            <li><a href="tel:+41273052000">+41 27 305 20 00</a></li>
+            <li><a href="mailto:info@hoteldesmuverans.ch">info@hoteldesmuverans.ch</a></li>
+            <li><a href="#contact">Route des Muverans 54</a></li>
+            <li><a href="#contact">1911 Ovronnaz, Valais</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2024 Hôtel des Muverans · Route des Muverans 54, 1911 Ovronnaz</p>
+        <a href="mailto:info@hoteldesmuverans.ch" class="footer-cta-link">Réserver un séjour</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Navigation scroll
+    const nav = document.getElementById('mainNav');
+    nav.classList.add('scrolled');
+    window.addEventListener('scroll', () => {
+      nav.classList.add('scrolled');
+    });
+
+    // Mobile menu
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('mobileMenu');
+      const burger = document.querySelector('.nav-burger');
+      if (!menu.contains(e.target) && !burger.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
